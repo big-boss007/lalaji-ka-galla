@@ -124,8 +124,8 @@
   </div>
 
   <div class="actions">
-    <button type="button" class="btn btn-add" on:click={handleAdd}>Add Money</button>
-    <button type="button" class="btn btn-subtract" on:click={handleSubtract}>Subtract Money</button>
+    <button type="button" class="btn btn-add" on:click={handleAdd}>Credit</button>
+    <button type="button" class="btn btn-subtract" on:click={handleSubtract}>Debit</button>
   </div>
 </form>
 
