@@ -4,6 +4,7 @@
   import EditTransactionModal from '$lib/components/EditTransactionModal.svelte';
   import { browser } from '$app/environment';
   import { get } from 'svelte/store';
+  import { formatDisplayDate } from '$lib/utils/formatDate.js'; // Import date formatter
 
   /**
    * @typedef {import('$lib/stores/transactions.js').Transaction} Transaction
@@ -83,11 +84,14 @@
     }
 
     const dataForSheet = currentTransactions.map(/** @param {Transaction} tx */ tx => ({
-      Date: new Date(tx.date).toLocaleDateString('en-GB'), 
+      Date: formatDisplayDate(tx.date), // Use DD MMM YYYY format
       Description: tx.description,
       Amount: tx.type === 'add' ? tx.amount : -tx.amount, 
       Type: tx.type === 'add' ? 'Credit' : 'Debit',
-      ID: tx.id
+      '₹500 Notes': tx.denom500 || 0,
+      '₹200 Notes': tx.denom200 || 0,
+      '₹100 Notes': tx.denom100 || 0,
+      ID: tx.id 
     }));
 
     const worksheet = utils.json_to_sheet(dataForSheet);
@@ -99,10 +103,13 @@
       { wch: 40 }, // Description
       { wch: 15 }, // Amount
       { wch: 10 }, // Type
+      { wch: 12 }, // ₹500 Notes
+      { wch: 12 }, // ₹200 Notes
+      { wch: 12 }, // ₹100 Notes
       { wch: 38 }  // ID
     ];
 
-    writeFileXLSX(workbook, 'MobileLedger_Transactions.xlsx');
+    writeFileXLSX(workbook, 'LalajiKaGalla_Transactions.xlsx'); // Updated filename
   }
 </script>
 

@@ -37,6 +37,13 @@
     <div class="details">
       <span class="description">{transaction.description || 'Transaction'}</span>
       <span class="date">{formatDisplayDate(transaction.date)}</span>
+      {#if transaction.denom500 || transaction.denom200 || transaction.denom100}
+        <span class="denominations">
+          {#if transaction.denom500}{transaction.denom500}x₹500{/if}{#if transaction.denom500 && (transaction.denom200 || transaction.denom100)}, {/if}
+          {#if transaction.denom200}{transaction.denom200}x₹200{/if}{#if transaction.denom200 && transaction.denom100}, {/if}
+          {#if transaction.denom100}{transaction.denom100}x₹100{/if}
+        </span>
+      {/if}
     </div>
     <div class="amounts">
       <span class="amount {amountClass}">{amountPrefix}{formattedAmount}</span>
@@ -61,7 +68,7 @@
   .info-group {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
+    align-items: flex-start; /* Changed from center to flex-start */
     width: 100%; /* Take full width */
   }
 
@@ -85,6 +92,11 @@
   .date {
     font-size: 0.85em;
     color: #777;
+  }
+  .denominations { /* Added style for denominations */
+    font-size: 0.75em;
+    color: #888;
+    margin-top: 2px;
   }
   .id {
     font-size: 0.7em;

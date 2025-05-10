@@ -8,8 +8,8 @@
   <meta name="theme-color" content="#333333" />
 </svelte:head>
 
+<Navbar />
 <div class="app-container">
-  <Navbar />
   <main class="main-content">
     <slot />
   </main>
@@ -20,6 +20,10 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 100%; /* Ensure it can be centered */
+    max-width: 600px; /* Or your desired max content width */
+    margin: 0 auto; /* Center the container */
+    padding: 0 16px; /* Horizontal padding for content */
   }
 
   .main-content {

@@ -21,7 +21,7 @@
   </main>
 
   <footer>
-    <p>&copy; {new Date().getFullYear()} Lalaji Ka Galla Solutions</p>
+    <p>&copy; {new Date().getFullYear()} Marwari Solutions Inc</p>
   </footer>
 </div>
 
@@ -29,7 +29,7 @@
   .home-screen-container {
     max-width: 600px; /* Max width for a mobile-like view on larger screens */
     margin: 0 auto;
-    padding: 15px;
+    padding: 15px 8px; /* Reduced left/right padding to 8px */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: #f0f2f5; /* Light grey background for the page */
     min-height: 100vh;

@@ -10,6 +10,9 @@ const localStorageKey = 'mobile-ledger-transactions';
  * @property {'add' | 'subtract'} type - Type of transaction.
  * @property {string} date - Date of the transaction (YYYY-MM-DD).
  * @property {string} description - Optional description for the transaction.
+ * @property {number} [denom500] - Quantity of 500 notes
+ * @property {number} [denom200] - Quantity of 200 notes
+ * @property {number} [denom100] - Quantity of 100 notes
  */
 
 /**
@@ -34,7 +37,7 @@ function createTransactionStore() {
     subscribe,
     /**
      * Adds a new transaction.
-     * @param {{ amount: number, type: 'add' | 'subtract', date: string, description?: string }} transactionDetails
+     * @param {{ amount: number, type: 'add' | 'subtract', date: string, description?: string, denom500?: number, denom200?: number, denom100?: number }} transactionDetails
      */
     addTransaction: (transactionDetails) => {
       update(transactions => {
@@ -44,6 +47,9 @@ function createTransactionStore() {
           type: transactionDetails.type,
           date: transactionDetails.date || new Date().toISOString().split('T')[0], // Default to today
           description: transactionDetails.description || '',
+          denom500: transactionDetails.denom500,
+          denom200: transactionDetails.denom200,
+          denom100: transactionDetails.denom100,
         };
         // Add to the beginning of the array so latest is first
         return [newTransaction, ...transactions];
