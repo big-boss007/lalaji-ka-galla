@@ -78,8 +78,22 @@ Finalizing UI refinements and ensuring application stability.
     *   Added red asterisks (*) to "Amount (INR)" and "Date" labels to indicate they are required.
 19. **Transaction List Item Alignment:**
     *   Updated `TransactionItem.svelte` and `AdminTransactionItem.svelte` to top-align the amount display with the description/date.
-20. **Next Development Step:**
-    *   Thorough testing of all implemented features and visual consistency.
+20. **Shrinking Navbar on Scroll (Mobile-Only):**
+    *   Implemented logic in `Navbar.svelte` to reduce its height on scroll in mobile views.
+    *   Adjusted mobile menu positioning to adapt to navbar height changes.
+    *   Refined hamburger menu icon by wrapping in a span and using relative positioning (`top: -5px`) for fine-tuned vertical alignment.
+21. **"Summary" Screen Implemented & Refined:**
+    *   Created `/summary` route and `+page.svelte`.
+    *   Displays "Total Value from Declared Denominations" using `BalanceDisplay` component (outside the main card).
+    *   Calculates and displays denomination bundles (of 100) and loose notes based on sum of user-entered denominations from all transactions (within a card).
+    *   Removed main "Summary" page title and "Total Ledger Balance" sub-heading from within the card.
+    *   Updated "Bundles" and "Change" section labels to include their respective total monetary values.
+    *   Removed the separate "Total - {value}" display from within the card as it's now shown at the top.
+    *   Updated individual bundle/loose note line items to display their own total value (e.g., "₹500 x 2 bundles - ₹1,00,000").
+    *   Added "Summary" link to Navbar.
+22. **Next Development Step:**
+    *   Thorough testing of all implemented features (including all Summary screen updates and navbar adjustments) and visual consistency.
+    *   Investigate and fix mobile scrolling issue if it persists.
     *   Final review for "Apple-quality" feel.
 
 ## Active Considerations & Patterns

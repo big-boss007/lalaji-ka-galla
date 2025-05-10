@@ -32,7 +32,7 @@
     padding: 15px 8px; /* Reduced left/right padding to 8px */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: #f0f2f5; /* Light grey background for the page */
-    min-height: 100vh;
+    min-height: 100vh; /* Restored this line */
     display: flex;
     flex-direction: column;
   }

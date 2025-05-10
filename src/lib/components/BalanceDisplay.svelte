@@ -1,9 +1,18 @@
 <script>
-  import { currentBalance } from '$lib/stores/transactions.js';
+  import { currentBalance as globalCurrentBalance } from '$lib/stores/transactions.js';
   import { formatInr } from '$lib/utils/formatInr.js';
 
+  /**
+   * Optional balance prop. If provided, this component will display this balance.
+   * Otherwise, it defaults to the global currentBalance store.
+   * @type {number | undefined}
+   */
+  export let balance = undefined;
+
   // Reactive declaration for the formatted balance
-  $: formattedBalance = formatInr($currentBalance);
+  let displayBalance;
+  $: displayBalance = balance !== undefined ? balance : $globalCurrentBalance;
+  $: formattedBalance = formatInr(displayBalance);
 </script>
 
 <div class="balance-display">

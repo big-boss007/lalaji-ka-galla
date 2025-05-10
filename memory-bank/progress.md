@@ -54,6 +54,13 @@ The Memory Bank documentation is established. The "Hello World" SvelteKit applic
     *   Ensured denomination input fields in `TransactionForm.svelte` display in a single row using Flexbox.
     *   Normalized "Denominations" heading style and updated required field indicators (asterisks) in `TransactionForm.svelte`.
     *   Top-aligned amount display in transaction lists (`TransactionItem.svelte` and `AdminTransactionItem.svelte`).
+    *   Implemented mobile-only shrinking navbar on scroll, including fine-tuning hamburger icon vertical position with `position: relative`.
+    *   Added new "Summary" screen:
+        *   Displays "Total Value from Declared Denominations" at the top using `BalanceDisplay`.
+        *   Shows denomination breakdown (bundles & loose notes) based on user-entered transaction denominations.
+        *   Refined layout: removed redundant page title and totals from within the card, updated section labels to include their values.
+        *   Updated individual bundle/loose note line items to display their own total value (e.g., "₹500 x 2 bundles - ₹1,00,000").
+    *   Updated Navbar to include "Summary" link.
 
 ## What's Left to Build (High-Level Overview) - At this reverted state
 

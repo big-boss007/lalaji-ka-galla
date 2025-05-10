@@ -19,11 +19,12 @@
   .app-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    width: 100%; /* Ensure it can be centered */
-    max-width: 600px; /* Or your desired max content width */
-    margin: 0 auto; /* Center the container */
-    padding: 0 16px; /* Horizontal padding for content */
+    min-height: 100vh; /* Restored */
+    /* flex-grow: 1; /* Removed */
+    width: 100%; 
+    max-width: 600px; 
+    margin: 0 auto; 
+    padding: 0 16px; 
   }
 
   .main-content {

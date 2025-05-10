@@ -14,6 +14,9 @@ html {
 body {
   margin: 0; /* Ensure body also has no margin */
   /* padding: 16px; Removed global body padding */
+  /* display: flex; /* Removed */
+  /* flex-direction: column; /* Removed */
+  /* min-height: 100vh; /* Removed */
 }
 
 /* Headings */
