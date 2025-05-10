@@ -1,0 +1,135 @@
+/* Base Typography */
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 17px; /* Base font size for iOS */
+  line-height: 1.5;
+  color: #1c1c1e; /* Standard dark text color */
+  background-color: #f0f2f5; /* Light gray background, common in iOS apps */
+  padding: 0; /* Remove default padding, will be handled by containers */
+  margin: 0; /* Ensure no default margin */
+}
+
+body {
+  margin: 0; /* Ensure body also has no margin */
+  padding: 16px; /* Add padding to body for overall app spacing */
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.5em;
+  color: #000; /* Pure black for headings, common in iOS Human Interface Guidelines */
+  margin-top: 0; /* Reset top margin */
+}
+
+h1 {
+  font-size: 28px; /* iOS Large Title size */
+}
+
+h2 {
+  font-size: 24px; /* iOS Title 1 size */
+}
+
+h3 {
+  font-size: 20px; /* iOS Title 2 / Headline size */
+}
+
+/* Buttons */
+button, .btn { /* Apply to button elements and classes like .btn */
+  font: inherit;
+  font-size: 17px; /* Standard iOS button text size */
+  font-weight: 600; /* Semibold for buttons */
+  padding: 12px 20px;
+  border-radius: 12px; /* Rounded corners like iOS buttons */
+  border: none;
+  background-color: #007aff; /* iOS blue */
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  display: inline-block; /* For proper padding and alignment */
+}
+
+button:hover, .btn:hover {
+  background-color: #005ecb; /* Darker shade for hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:active, .btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Component Style (can be applied to divs acting as cards) */
+.card {
+  background-color: #ffffff; /* White background for cards */
+  border-radius: 20px; /* More pronounced rounding for cards */
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); /* Softer, more diffused shadow */
+  margin-bottom: 20px;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  font: inherit;
+  font-size: 17px; /* Standard iOS text field size */
+  padding: 12px;
+  border-radius: 12px; /* Rounded corners */
+  border: 1px solid #c6c6c8; /* iOS-like border color */
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: #f9f9f9; /* Slightly off-white background for inputs */
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus {
+  border-color: #007aff; /* iOS blue focus ring */
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2); /* Subtle focus glow */
+}
+
+/* Mobile-first Layout Container */
+.container {
+  max-width: 600px; /* Max width for mobile-like view on larger screens */
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-left: 0; /* Remove padding if body already has it */
+  padding-right: 0;
+}
+
+/* Animation */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Global link styling (if not overridden by components) */
+a {
+  color: #007aff;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

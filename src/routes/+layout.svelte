@@ -1,0 +1,47 @@
+<script>
+  import Navbar from '$lib/components/Navbar.svelte';
+  import '../app.css'; // Assuming a global stylesheet might be created later or for resets
+</script>
+
+<svelte:head>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#333333" />
+</svelte:head>
+
+<div class="app-container">
+  <Navbar />
+  <main class="main-content">
+    <slot />
+  </main>
+</div>
+
+<style>
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .main-content {
+    flex-grow: 1;
+    /* Padding can be added here if needed, or within individual page containers */
+  }
+
+  /* Basic reset/global styles (can be moved to app.css) */
+  :global(body) {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f2f5; /* Consistent background for the entire app */
+    color: #333;
+  }
+
+  :global(a) {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :global(*, *::before, *::after) {
+    box-sizing: border-box;
+  }
+</style>
