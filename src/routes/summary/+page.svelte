@@ -69,22 +69,22 @@
 
       {#if bundles500 > 0 || bundles200 > 0 || bundles100 > 0}
         <div class="bundles-section">
-          <h4>Bundles - ₹{formatInr(totalBundlesValue)}</h4>
+          <h4><span>Bundles</span><span>₹{formatInr(totalBundlesValue)}</span></h4>
           <ul>
-            {#if bundles500 > 0}<li>₹500 x {bundles500} bundles - ₹{formatInr(bundles500 * 500 * 100)}</li>{/if}
-            {#if bundles200 > 0}<li>₹200 x {bundles200} bundles - ₹{formatInr(bundles200 * 200 * 100)}</li>{/if}
-            {#if bundles100 > 0}<li>₹100 x {bundles100} bundles - ₹{formatInr(bundles100 * 100 * 100)}</li>{/if}
+            {#if bundles500 > 0}<li><span>₹500 x {bundles500} bundles</span><span>₹{formatInr(bundles500 * 500 * 100)}</span></li>{/if}
+            {#if bundles200 > 0}<li><span>₹200 x {bundles200} bundles</span><span>₹{formatInr(bundles200 * 200 * 100)}</span></li>{/if}
+            {#if bundles100 > 0}<li><span>₹100 x {bundles100} bundles</span><span>₹{formatInr(bundles100 * 100 * 100)}</span></li>{/if}
           </ul>
         </div>
       {/if}
 
       {#if loose500 > 0 || loose200 > 0 || loose100 > 0}
         <div class="change-section">
-          <h4>Change - ₹{formatInr(totalLooseNotesValue)}</h4>
+          <h4><span>Change</span><span>₹{formatInr(totalLooseNotesValue)}</span></h4>
           <ul>
-            {#if loose500 > 0}<li>₹500 x {loose500} notes - ₹{formatInr(loose500 * 500)}</li>{/if}
-            {#if loose200 > 0}<li>₹200 x {loose200} notes - ₹{formatInr(loose200 * 200)}</li>{/if}
-            {#if loose100 > 0}<li>₹100 x {loose100} notes - ₹{formatInr(loose100 * 100)}</li>{/if}
+            {#if loose500 > 0}<li><span>₹500 x {loose500} notes</span><span>₹{formatInr(loose500 * 500)}</span></li>{/if}
+            {#if loose200 > 0}<li><span>₹200 x {loose200} notes</span><span>₹{formatInr(loose200 * 200)}</span></li>{/if}
+            {#if loose100 > 0}<li><span>₹100 x {loose100} notes</span><span>₹{formatInr(loose100 * 100)}</span></li>{/if}
           </ul>
         </div>
       {/if}
@@ -106,6 +106,9 @@
   .denominations-summary {
     margin-top: 20px; /* This might need adjustment if the above section is removed */
                      /* Or the summary-page-container's top margin/padding */
+    max-width: 320px; /* Added to constrain width */
+    margin-left: auto; /* Added to center if narrower than card */
+    margin-right: auto; /* Added to center if narrower than card */
   }
   
   /* Removed .total-denominations-value and its child p/h4 styles */
@@ -121,6 +124,14 @@
     margin-bottom: 10px;
     padding-bottom: 5px;
     border-bottom: 1px dashed #dcdcdc;
+    display: grid; /* Added */
+    grid-template-columns: 1fr auto; /* Added */
+    column-gap: 10px; /* Added */
+  }
+
+  .bundles-section h4 > span:last-child,
+  .change-section h4 > span:last-child {
+    justify-self: end; /* Added */
   }
 
   .bundles-section ul, .change-section ul {
@@ -132,10 +143,18 @@
     font-size: 1rem;
     color: #3c3c43;
     padding: 8px 0; /* Increased padding slightly for better spacing */
-    display: flex;
-    justify-content: space-between;
+    display: grid; /* Changed from flex */
+    grid-template-columns: 1fr auto; /* Added */
+    column-gap: 10px; /* Added */
+    /* justify-content: space-between; Removed */
     border-bottom: 1px solid #f0f0f0; /* Subtle separator for each line item */
   }
+
+  .bundles-section li > span:last-child,
+  .change-section li > span:last-child {
+    justify-self: end; /* Added */
+  }
+
   .bundles-section li:last-child, .change-section li:last-child {
     border-bottom: none;
   }

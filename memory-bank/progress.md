@@ -58,9 +58,15 @@ The Memory Bank documentation is established. The "Hello World" SvelteKit applic
     *   Added new "Summary" screen:
         *   Displays "Total Value from Declared Denominations" at the top using `BalanceDisplay`.
         *   Shows denomination breakdown (bundles & loose notes) based on user-entered transaction denominations.
-        *   Refined layout: removed redundant page title and totals from within the card, updated section labels to include their values.
+        *   Refined layout: removed redundant page title and totals from within the card, updated section labels (including "Total Value from Declared Denominations" for style unification) to include total values.
         *   Updated individual bundle/loose note line items to display their own total value (e.g., "₹500 x 2 bundles - ₹1,00,000").
-    *   Updated Navbar to include "Summary" link.
+    *   Added new "About" screen with descriptive application content.
+    *   Updated Navbar to include "Summary" and "About" links.
+    *   Updated "Modify Entries" screen to have a main screen title ("Modify Entries") and a card title ("All Transactions").
+    *   Enhanced "Edit Transaction" modal:
+        *   Allows adding/editing denomination details.
+        *   Updated layout for compactness (Amount and Type side-by-side).
+        *   Refined modal padding, input field styling for consistent height, and denomination label font size (via increased CSS specificity) to prevent wrapping.
 
 ## What's Left to Build (High-Level Overview) - At this reverted state
 

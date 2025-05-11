@@ -117,8 +117,12 @@
   <title>Modify Entries - Lalaji Ka Galla</title>
 </svelte:head>
 
-<div class="admin-page-container"> 
-  <h2>Modify Entries - All Transactions</h2>
+<div class="screen-title-container">
+  <h1>Modify Entries</h1>
+</div>
+
+<div class="admin-page-container card"> 
+  <h2>All Transactions</h2>
 
   {#if allTransactionsWithRunningBalance.length === 0}
     <p class="no-transactions">No transactions recorded yet.</p>
@@ -153,15 +157,26 @@
 {/if}
 
 <style>
-  .admin-page-container { /* Keep class name for now */
+  .screen-title-container {
+    text-align: center;
+    margin-bottom: 20px; 
+    margin-top: 20px; /* Add some top margin as well */
+  }
+  .screen-title-container h1 {
+    font-size: 2rem; 
+    color: #1c1c1e;
+    margin: 0; 
+    font-weight: 700; /* Make it a bit bolder */
+  }
+  .admin-page-container { /* This already has .card styles from app.css if applied globally */
     padding: 20px;
     max-width: 900px; 
-    margin: 20px auto;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin: 0 auto 20px auto; /* Adjust margin to account for screen title */
+    /* background-color: #fff; Already in .card */
+    /* border-radius: 8px; Already in .card */
+    /* box-shadow: 0 2px 10px rgba(0,0,0,0.1); Already in .card */
   }
-  h2 {
+  .admin-page-container h2 { /* Style for "All Transactions" */
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
     margin-top: 0;

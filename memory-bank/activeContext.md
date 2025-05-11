@@ -91,8 +91,19 @@ Finalizing UI refinements and ensuring application stability.
     *   Removed the separate "Total - {value}" display from within the card as it's now shown at the top.
     *   Updated individual bundle/loose note line items to display their own total value (e.g., "₹500 x 2 bundles - ₹1,00,000").
     *   Added "Summary" link to Navbar.
-22. **Next Development Step:**
-    *   Thorough testing of all implemented features (including all Summary screen updates and navbar adjustments) and visual consistency.
+22. **"About" Screen Implemented:**
+    *   Created `/about` route and `+page.svelte` with marketing/descriptive content.
+    *   Added "About" link to Navbar.
+23. **"Modify Entries" Screen Title Update:**
+    *   Separated screen title ("Modify Entries") from card title ("All Transactions").
+24. **Edit Transaction Modal - Denomination Editing & Layout Update:**
+    *   Added denomination input fields (₹500, ₹200, ₹100), auto-calculation, validation, and reset logic to `EditTransactionModal.svelte`.
+    *   Users can now add or edit denomination details when modifying an existing transaction.
+    *   Updated modal layout to place "Amount (INR)" and "Type" fields side-by-side.
+    *   Refined modal padding and input field styling for better spacing and consistent height.
+    *   Adjusted CSS specificity to ensure correct (reduced) font size for denomination labels within the modal, preventing wrapping.
+25. **Next Development Step:**
+    *   Thorough testing of all implemented features (including all Edit Modal refinements, title changes, About screen, Summary screen, and all navbar adjustments) and visual consistency.
     *   Investigate and fix mobile scrolling issue if it persists.
     *   Final review for "Apple-quality" feel.
 
