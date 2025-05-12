@@ -3,9 +3,15 @@
   import { formatInr } from '$lib/utils/formatInr.js';
   import BalanceDisplay from '$lib/components/BalanceDisplay.svelte'; // Import BalanceDisplay
 
-  let totalUserDenom500 = 0;
-  let totalUserDenom200 = 0;
-  let totalUserDenom100 = 0;
+  // These will store the net effect for value calculation
+  let netDenom500 = 0;
+  let netDenom200 = 0;
+  let netDenom100 = 0;
+
+  // These will store non-negative quantities for bundle/loose display
+  let displayDenom500 = 0;
+  let displayDenom200 = 0;
+  let displayDenom100 = 0;
 
   let bundles500 = 0;
   let loose500 = 0;
@@ -13,37 +19,45 @@
   let loose200 = 0;
   let bundles100 = 0;
   let loose100 = 0;
+  
   let totalValueFromDenominations = 0;
   let totalBundlesValue = 0;
   let totalLooseNotesValue = 0;
 
   $: {
-    totalUserDenom500 = 0;
-    totalUserDenom200 = 0;
-    totalUserDenom100 = 0;
+    netDenom500 = 0;
+    netDenom200 = 0;
+    netDenom100 = 0;
 
     $transactions.forEach(/** @param {import('$lib/stores/transactions.js').Transaction} tx */ tx => {
+      const factor = tx.type === 'add' ? 1 : -1;
       if (tx.denom500 && typeof tx.denom500 === 'number') {
-        totalUserDenom500 += tx.denom500;
+        netDenom500 += tx.denom500 * factor;
       }
       if (tx.denom200 && typeof tx.denom200 === 'number') {
-        totalUserDenom200 += tx.denom200;
+        netDenom200 += tx.denom200 * factor;
       }
       if (tx.denom100 && typeof tx.denom100 === 'number') {
-        totalUserDenom100 += tx.denom100;
+        netDenom100 += tx.denom100 * factor;
       }
     });
 
-    bundles500 = Math.floor(totalUserDenom500 / 100);
-    loose500 = totalUserDenom500 % 100;
-    bundles200 = Math.floor(totalUserDenom200 / 100);
-    loose200 = totalUserDenom200 % 100;
-    bundles100 = Math.floor(totalUserDenom100 / 100);
-    loose100 = totalUserDenom100 % 100;
+    // Calculate the total value based on net denominations
+    totalValueFromDenominations = (netDenom500 * 500) + 
+                                 (netDenom200 * 200) + 
+                                 (netDenom100 * 100);
 
-    totalValueFromDenominations = (totalUserDenom500 * 500) + 
-                                 (totalUserDenom200 * 200) + 
-                                 (totalUserDenom100 * 100);
+    // Determine displayable (non-negative) quantities for bundles/loose notes
+    displayDenom500 = Math.max(0, netDenom500);
+    displayDenom200 = Math.max(0, netDenom200);
+    displayDenom100 = Math.max(0, netDenom100);
+
+    bundles500 = Math.floor(displayDenom500 / 100);
+    loose500 = displayDenom500 % 100;
+    bundles200 = Math.floor(displayDenom200 / 100);
+    loose200 = displayDenom200 % 100;
+    bundles100 = Math.floor(displayDenom100 / 100);
+    loose100 = displayDenom100 % 100;
     
     totalBundlesValue = (bundles500 * 500 * 100) + 
                         (bundles200 * 200 * 100) + 
@@ -64,7 +78,7 @@
 <div class="summary-page-container card">
 
   <div class="denominations-summary">
-    {#if totalUserDenom500 > 0 || totalUserDenom200 > 0 || totalUserDenom100 > 0}
+    {#if displayDenom500 > 0 || displayDenom200 > 0 || displayDenom100 > 0}
       <!-- Removed the total-denominations-value div -->
 
       {#if bundles500 > 0 || bundles200 > 0 || bundles100 > 0}

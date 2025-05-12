@@ -7,8 +7,12 @@
   <meta name="description" content="Learn more about Lalaji Ka Galla - your simple pocket digital ledger for cash management." />
 </svelte:head>
 
+<div class="screen-title-container">
+  <h1>About This App</h1>
+</div>
+
 <div class="about-page-container card">
-  <h2>About Lalaji Ka Galla</h2>
+  <!-- <h2>About Lalaji Ka Galla</h2> Removed -->
 
   <section id="introduction">
     <h3>Your Pocket Digital Ledger</h3>
@@ -106,17 +110,23 @@
 </div>
 
 <style>
+  .screen-title-container {
+    text-align: center; 
+    margin-top: 20px;
+    margin-bottom: 20px; 
+  }
+  .screen-title-container h1 {
+    font-size: 2rem; 
+    color: #1c1c1e;
+    margin: 0; 
+    font-weight: 700;
+  }
   .about-page-container {
     padding: 20px;
     /* Uses .card style from app.css for base background/shadow/border-radius */
     line-height: 1.7; /* Improve readability of paragraphs */
   }
-  .about-page-container h2 {
-    text-align: center;
-    margin-bottom: 30px; /* More space after main title */
-    font-size: 2rem;
-    color: #1c1c1e;
-  }
+  /* Removed .about-page-container h2 rule */
   section {
     margin-bottom: 25px; /* Space between sections */
   }

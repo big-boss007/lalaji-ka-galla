@@ -78,7 +78,17 @@ function createTransactionStore() {
      * Sets the entire transactions array.
      * @param {Transaction[]} transactions - The new array of transactions.
      */
-    set: (transactions) => set(transactions) // Allow overwriting the store, e.g., for initialization or reset
+    set: (transactions) => set(transactions), // Allow overwriting the store, e.g., for initialization or reset
+    
+    /**
+     * Deletes all transactions from the store and localStorage.
+     */
+    deleteAllTransactions: () => {
+      set([]); // Set the store to an empty array
+      if (browser) {
+        localStorage.setItem(localStorageKey, JSON.stringify([]));
+      }
+    }
   };
 }
 

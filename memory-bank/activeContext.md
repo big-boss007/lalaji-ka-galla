@@ -8,8 +8,13 @@ Finalizing UI refinements and ensuring application stability.
 *   **Technology Choice:** Svelte (with SvelteKit).
 *   **Initial "Hello World" Step:** Completed.
 *   **Memory Bank Structure:** Established.
+*   **Edit Transaction Modal UI Refinement:** CTA buttons ("Save Changes", "Cancel") updated to be horizontally centered and fluid.
+*   **Summary Screen Layout Refinements:**
+    *   Amounts in section subtitles and list items are now right-aligned using CSS Grid.
+    *   Trailing hyphens removed from descriptive text on the Summary screen.
+    *   Whitespace between descriptions and amounts optimized by constraining the summary section's width and adding column gaps.
 
-## Next Immediate Steps (Reflecting state *after* button rename, *before* Vercel/Auth)
+## Next Immediate Steps (Reflecting state *after* recent UI updates)
 
 1.  **"Hello World" SvelteKit Application Completed:**
     *   Directory `svelte-hello-world` created and verified.
@@ -39,7 +44,7 @@ Finalizing UI refinements and ensuring application stability.
     *   `app.css` updated with a new global stylesheet.
 9.  **Input Formatting Refinement:**
     *   On-the-fly Indian comma formatting for amount input implemented.
-10. **UX/UI Refinements Implemented (Batch 1 & 2):**
+10. **UX/UI Refinements Implemented (Batch 1 & 2 - Pre-Summary/Edit Modal specific changes):**
     *   "Balance:" prefix removed from running balances.
     *   Admin item CTA layout adjusted.
     *   Transaction ID display removed from Admin list.
@@ -66,7 +71,7 @@ Finalizing UI refinements and ensuring application stability.
 16. **Denomination Display & Export Updates:**
     *   Excel export in "Modify Entries" now includes columns for ₹500, ₹200, ₹100 note quantities and uses "DD MMM YYYY" date format.
     *   Removed "Denominations:" prefix label from transaction lists, showing only quantities (e.g., "2x₹500").
-17. **Layout & Styling Updates (Batch 1 & 2):**
+17. **Layout & Styling Updates (Batch 1 & 2 - Pre-Summary/Edit Modal specific changes):**
     *   Footer copyright text updated to "© YYYY Marwari Solutions Inc".
     *   Home page (`+page.svelte`) content container side padding reduced to 8px.
     *   Removed global body padding from `app.css`.
@@ -82,30 +87,46 @@ Finalizing UI refinements and ensuring application stability.
     *   Implemented logic in `Navbar.svelte` to reduce its height on scroll in mobile views.
     *   Adjusted mobile menu positioning to adapt to navbar height changes.
     *   Refined hamburger menu icon by wrapping in a span and using relative positioning (`top: -5px`) for fine-tuned vertical alignment.
-21. **"Summary" Screen Implemented & Refined:**
+21. **"Summary" Screen Implemented & Refined (Including latest layout updates):**
     *   Created `/summary` route and `+page.svelte`.
     *   Displays "Total Value from Declared Denominations" using `BalanceDisplay` component (outside the main card).
     *   Calculates and displays denomination bundles (of 100) and loose notes based on sum of user-entered denominations from all transactions (within a card).
     *   Removed main "Summary" page title and "Total Ledger Balance" sub-heading from within the card.
     *   Updated "Bundles" and "Change" section labels to include their respective total monetary values.
     *   Removed the separate "Total - {value}" display from within the card as it's now shown at the top.
-    *   Updated individual bundle/loose note line items to display their own total value (e.g., "₹500 x 2 bundles - ₹1,00,000").
+    *   Updated individual bundle/loose note line items to display their own total value and align amounts to the right using CSS Grid, with optimized whitespace.
     *   Added "Summary" link to Navbar.
 22. **"About" Screen Implemented:**
     *   Created `/about` route and `+page.svelte` with marketing/descriptive content.
     *   Added "About" link to Navbar.
 23. **"Modify Entries" Screen Title Update:**
     *   Separated screen title ("Modify Entries") from card title ("All Transactions").
-24. **Edit Transaction Modal - Denomination Editing & Layout Update:**
+24. **Edit Transaction Modal - Denomination Editing & Layout Update (Including CTA button styling):**
     *   Added denomination input fields (₹500, ₹200, ₹100), auto-calculation, validation, and reset logic to `EditTransactionModal.svelte`.
     *   Users can now add or edit denomination details when modifying an existing transaction.
     *   Updated modal layout to place "Amount (INR)" and "Type" fields side-by-side.
     *   Refined modal padding and input field styling for better spacing and consistent height.
     *   Adjusted CSS specificity to ensure correct (reduced) font size for denomination labels within the modal, preventing wrapping.
-25. **Next Development Step:**
-    *   Thorough testing of all implemented features (including all Edit Modal refinements, title changes, About screen, Summary screen, and all navbar adjustments) and visual consistency.
-    *   Investigate and fix mobile scrolling issue if it persists.
-    *   Final review for "Apple-quality" feel.
+    *   CTA buttons ("Save Changes", "Cancel") are now horizontally centered and fluid.
+25. **"About" Screen Title Update:**
+    *   Moved "About This App" title outside the main content card and restyled for consistency with other screen titles.
+26. **"Diagnostics" Screen Implemented & Refined:**
+    *   Created `/diagnostics` route and `+page.svelte`.
+    *   Added options to "Create 20 Test Entries" and "Flush All Data" (with double confirmation).
+    *   Updated `transactions.js` store with `deleteAllTransactions` method.
+    *   Added "Diagnostics" link to Navbar.
+    *   Refined test data generation to ensure amounts are multiples of 100 and denominations are consistent.
+27. **Summary Screen Denomination Logic Fix:**
+    *   Corrected logic to ensure debit transactions appropriately reduce the net sum of declared denominations.
+    *   Ensured "Total Value from Declared Denominations" reflects this net value.
+    *   Bundle/change breakdown uses non-negative quantities for display.
+28. **Major Testing & Refinement Phase Completed:**
+    *   Thorough testing of all features and UI elements conducted.
+    *   Mobile scrolling issue investigated and resolved.
+    *   Final review for "Apple-quality" aesthetic completed.
+29. **Next Development Step:**
+    *   Address missing PWA icons.
+    *   Consider any final minor adjustments or documentation updates.
 
 ## Active Considerations & Patterns
 *   Indian Comma Formatting.

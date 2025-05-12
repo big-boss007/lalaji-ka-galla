@@ -39,6 +39,7 @@
     <li><a href="/" class:active={$page.url.pathname === '/'} on:click={() => menuOpen = false}>Home</a></li>
     <li><a href="/summary" class:active={$page.url.pathname === '/summary'} on:click={() => menuOpen = false}>Summary</a></li>
     <li><a href="/modify-entries" class:active={$page.url.pathname === '/modify-entries'} on:click={() => menuOpen = false}>Modify Entries</a></li>
+    <li><a href="/diagnostics" class:active={$page.url.pathname === '/diagnostics'} on:click={() => menuOpen = false}>Diagnostics</a></li>
     <li><a href="/about" class:active={$page.url.pathname === '/about'} on:click={() => menuOpen = false}>About</a></li>
   </ul>
 </nav>
